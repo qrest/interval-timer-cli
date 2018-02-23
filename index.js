@@ -44,7 +44,7 @@ function startTimer(minutes, callback, speak) {
       var timeInSeconds = getRemainingTimeInSeconds(currentSet);
 
       if (timeInSeconds <= 0) {
-        var phrase = 'interval complete';
+        var phrase = speak || 'interval complete';
         console.log(phrase, '\n');
         growl(phrase, { title: 'interval-timer'});
         if (currentSet.speak) {
