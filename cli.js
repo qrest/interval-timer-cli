@@ -5,7 +5,7 @@ var intervalTimerCli= require('./');
 var cli = meow({
   help: [
     'Options',
-    '-spk --speak <will enable text to speech for audio feedback>',
+    '-spk --speak <desired spoken interval alert; leave empty for default>',
     '-i --intervals <desired minutes seperarated by \',\'>',
     '-s --sets <number of repetitions for the intervals>',
     '',
@@ -15,7 +15,7 @@ var cli = meow({
     '- will remove 1 minute from the timer',
     '',
     'Examples:',
-    'interval-timer --sets 2 --intervals 25,5 --speak',
+    'interval-timer --sets 2 --intervals 25,5 --speak "time\'s up"',
     'interval-timer -s 2 -i 25,5 --spk'
   ].join('\n')
 });
@@ -43,6 +43,11 @@ else if(intervals.split) {
 var pIntervals = intervalInts.map(function(v) {
   return v + (v > 1 ? ' minutes' : ' minute');
 });
+if (speak == true) {
+  if (!(speak typeof string)) {
+    speak = "interval complete";
+  }
+}
 
 console.log('Intervals:', pIntervals, 'for', sets, pSets);
 intervalTimerCli(sets, intervalInts, speak, labels);
