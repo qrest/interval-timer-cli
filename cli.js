@@ -44,7 +44,7 @@ var pIntervals = intervalInts.map(function(v) {
   return v + (v > 1 ? ' minutes' : ' minute');
 });
 if (speak == true) {
-  if (!(speak typeof string)) {
+  if (!(typeof speak === 'string')) {
     speak = "interval complete";
   }
 }
